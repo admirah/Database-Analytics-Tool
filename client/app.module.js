@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', "angular2-jwt", "@angular/http", "ng-semantic", './app.component', "./routes", "./modules/home/izvjestaji.module", "./modules/mape/mape.module", "./modules/ankete/ankete.module"], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', "angular2-jwt", "@angular/http", "ng-semantic", './app.component', "./routes", "./modules/reports/reports.module", "./modules/maps/maps.module", "./modules/survey/survey.module"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', "angular2-jwt", "
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, angular2_jwt_1, http_1, ng_semantic_1, app_component_1, routes_1, izvjestaji_module_1, mape_module_1, ankete_module_1;
+    var core_1, platform_browser_1, angular2_jwt_1, http_1, ng_semantic_1, app_component_1, routes_1, reports_module_1, maps_module_1, survey_module_1;
     var AppModule;
     return {
         setters:[
@@ -35,14 +35,14 @@ System.register(['@angular/core', '@angular/platform-browser', "angular2-jwt", "
             function (routes_1_1) {
                 routes_1 = routes_1_1;
             },
-            function (izvjestaji_module_1_1) {
-                izvjestaji_module_1 = izvjestaji_module_1_1;
+            function (reports_module_1_1) {
+                reports_module_1 = reports_module_1_1;
             },
-            function (mape_module_1_1) {
-                mape_module_1 = mape_module_1_1;
+            function (maps_module_1_1) {
+                maps_module_1 = maps_module_1_1;
             },
-            function (ankete_module_1_1) {
-                ankete_module_1 = ankete_module_1_1;
+            function (survey_module_1_1) {
+                survey_module_1 = survey_module_1_1;
             }],
         execute: function() {
             AppModule = (function () {
@@ -54,9 +54,9 @@ System.register(['@angular/core', '@angular/platform-browser', "angular2-jwt", "
                             platform_browser_1.BrowserModule,
                             http_1.HttpModule,
                             ng_semantic_1.NgSemanticModule,
-                            izvjestaji_module_1.IzvjestajiModule,
-                            mape_module_1.MapeModule,
-                            ankete_module_1.AnketeModule,
+                            reports_module_1.ReportsModule,
+                            maps_module_1.MapsModule,
+                            survey_module_1.SurveyModule,
                             routes_1.routing
                         ],
                         providers: [

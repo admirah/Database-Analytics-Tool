@@ -6,9 +6,9 @@ import "rxjs/add/operator/map";
     template: `
 <div class="ui container">
     <nav>
-      <a routerLink="/izvjestaji" routerLinkActive="active">Izvjestaji</a>
-      <a routerLink="/ankete" routerLinkActive="active">Ankete</a>
- <a routerLink="/mape" routerLinkActive="active">Mape</a>
+      <a routerLink="/reports" routerLinkActive="active">Izvjestaji</a>
+      <a routerLink="/survey" routerLinkActive="active">Ankete</a>
+ <a routerLink="/maps" routerLinkActive="active">Mape</a>
     </nav>
     <router-outlet></router-outlet>
     

@@ -26,7 +26,7 @@ System.register(["@angular/core", "rxjs/add/operator/map"], function(exports_1, 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "app",
-                        template: "\n<div class=\"ui container\">\n    <nav>\n      <a routerLink=\"/izvjestaji\" routerLinkActive=\"active\">Izvjestaji</a>\n      <a routerLink=\"/ankete\" routerLinkActive=\"active\">Ankete</a>\n <a routerLink=\"/mape\" routerLinkActive=\"active\">Mape</a>\n    </nav>\n    <router-outlet></router-outlet>\n    \n    \n    \n   \n   \n</div>"
+                        template: "\n<div class=\"ui container\">\n    <nav>\n      <a routerLink=\"/reports\" routerLinkActive=\"active\">Izvjestaji</a>\n      <a routerLink=\"/survey\" routerLinkActive=\"active\">Ankete</a>\n <a routerLink=\"/maps\" routerLinkActive=\"active\">Mape</a>\n    </nav>\n    <router-outlet></router-outlet>\n    \n    \n    \n   \n   \n</div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

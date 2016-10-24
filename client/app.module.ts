@@ -6,18 +6,18 @@ import { NgSemanticModule } from "ng-semantic";
 
 import { AppComponent }  from './app.component';
 import { routing } from "./routes";
-import { IzvjestajiModule } from "./modules/home/izvjestaji.module";
-import { MapeModule } from "./modules/mape/mape.module";
-import { AnketeModule } from "./modules/ankete/ankete.module";
+import { ReportsModule } from "./modules/reports/reports.module";
+import { MapsModule } from "./modules/maps/maps.module";
+import { SurveyModule } from "./modules/survey/survey.module";
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         NgSemanticModule,
-        IzvjestajiModule,
-      MapeModule,
-      AnketeModule,
+        ReportsModule,
+      MapsModule,
+      SurveyModule,
         routing
     ],
     providers: [
