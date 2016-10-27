@@ -6,6 +6,7 @@ import { CommonModule } from "@angular/common";
 import { ReportsComponent } from "./reports.component";
 import { routing } from "./reports.routing";
 import { SharedModule } from "../shared/shared.module";
+import { nvD3 } from "ng2-nvd3";
 declare let d3:any;
 @NgModule({
     imports: [
@@ -16,7 +17,9 @@ declare let d3:any;
         NgSemanticModule,
     ],
     declarations: [
-        ReportsComponent
+        ReportsComponent,
+      nvD3
+     
 
     ],
     bootstrap: [

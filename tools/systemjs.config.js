@@ -27,10 +27,9 @@ var isPublic = typeof window != "undefined";
       'rxjs': 'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
-      'ng-semantic': 'npm:ng-semantic'
-      , 'ng2-nvd3': 'node_modules/ng2-nvd3/lib'
-      , 'd3': 'node_modules/d3/build'
-      , 'nvd3': 'node_modules/nvd3/build'
+      'ng-semantic': 'npm:ng-semantic',
+      'ng2-nvd3':'node_modules/ng2-nvd3/build/lib'
+
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -48,17 +47,11 @@ var isPublic = typeof window != "undefined";
       'ng-semantic': {
         main: 'ng-semantic',
         defaultExtension: 'js'
-      }, 'd3': {
-        main: "d3"
-        , defaultExtension: "js"
       }
-      , 'nvd3': {
-        main: "nvd3"
-        , defaultExtension: "js"
-      },
-      'ng2-nvd3': {
-        main: "ng2-nvd3"
-        , defaultExtension: "ts"
+      ,
+      'ng2-nvd3':{
+        main: 'ng2-nvd3',
+        defaultExtension: 'js'
       }
 
     }
