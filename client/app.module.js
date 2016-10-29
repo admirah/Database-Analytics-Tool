@@ -62,7 +62,7 @@ System.register(['@angular/core', '@angular/platform-browser', "angular2-jwt", "
                         providers: [
                             angular2_jwt_1.provideAuth({
                                 globalHeaders: [{ "Content-type": "application/json" }],
-                                newJwtError: true,
+                                noJwtError: true,
                                 noTokenScheme: true
                             })
                         ],

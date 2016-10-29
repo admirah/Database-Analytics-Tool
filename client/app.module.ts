@@ -23,11 +23,11 @@ import { SurveyModule } from "./modules/survey/survey.module";
     providers: [
         provideAuth({
             globalHeaders: [{"Content-type": "application/json"}],
-            newJwtError: true,
+            noJwtError: true,
             noTokenScheme: true
         })
     ],
-    declarations: [  AppComponent ],
+    declarations: [  AppComponent],
     bootstrap:    [ AppComponent ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
