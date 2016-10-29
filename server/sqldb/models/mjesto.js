@@ -3,7 +3,7 @@
  */
 module.exports = function (sequelize, DataTypes) {
   var mjesto = sequelize.define('mjesto', {
-      
+
       naziv: {
         type: DataTypes.STRING,
         allowNull: false
@@ -12,9 +12,9 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       }
-    }, //createdAt koji sequelize automatski kreira cemo koristiti kao timestamp
+    },
     {
-      freezeTableName: true // Model tableName will be the same as the model name
+      freezeTableName: true 
     }
     )
     ;

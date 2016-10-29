@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var konacna_ocjena = sequelize.define('konacna_ocjena', {
-      stuent: {
+      student: {
         type: DataTypes.INTEGER,
         primaryKex:true,
         allowNull: false
@@ -20,9 +20,9 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.DATE,
         allowNull: false
       }
-    }, //createdAt koji sequelize automatski kreira cemo koristiti kao timestamp
+    },
     {
-      freezeTableName: true // Model tableName will be the same as the model name
+      freezeTableName: true 
     }
     )
     ;

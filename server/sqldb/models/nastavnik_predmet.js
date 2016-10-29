@@ -16,9 +16,9 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey:true,
         allowNull: false
       }
-    }, //createdAt koji sequelize automatski kreira cemo koristiti kao timestamp
+    },
     {
-      freezeTableName: true // Model tableName will be the same as the model name
+      freezeTableName: true 
     }
     )
     ;
