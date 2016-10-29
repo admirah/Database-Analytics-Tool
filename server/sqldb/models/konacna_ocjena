@@ -1,0 +1,30 @@
+module.exports = function (sequelize, DataTypes) {
+  var konacna_ocjena = sequelize.define('konacna_ocjena', {
+      stuent: {
+        type: DataTypes.INTEGER,
+        primaryKex:true,
+        allowNull: false
+      },
+
+      predmet: {
+        type: DataTypes.INTEGER,
+        primaryKey:true,
+        allowNull: false
+      },
+
+      ocjena: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      datum: {
+        type: DataTypes.DATE,
+        allowNull: false
+      }
+    }, //createdAt koji sequelize automatski kreira cemo koristiti kao timestamp
+    {
+      freezeTableName: true // Model tableName will be the same as the model name
+    }
+    )
+    ;
+  return konacna_ocjena;
+};
