@@ -28,7 +28,8 @@ var isPublic = typeof window != "undefined";
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
       'ng-semantic': 'npm:ng-semantic',
-      'ng2-nvd3':'npm:ng2-nvd3/build/lib'
+      'ng2-nvd3':'npm:ng2-nvd3/build/lib',
+      'sequalize':'npm:sequalize'
 
     },
     // packages tells the System loader how to load when no filename and/or no extension

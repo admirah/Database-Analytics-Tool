@@ -12,11 +12,11 @@ var db = {
     Sequelize,
     sequelize: new Sequelize(config.database, config.username, config.password, config.options)
 };
-
+exports.dbS=db.sequelize;
 
 var akademska_godina = db.sequelize.import('./models/akademska_godina.js');
-/*var akademska_godina_predmet = db.sequelize.import('./models/akademska_godina_predmet.js');
-//var drzava = db.sequelize.import('./models/drzava.js');  NEMA MODELA DRZAVE
+var akademska_godina_predmet = db.sequelize.import('./models/akademska_godina_predmet.js');
+/*var drzava = db.sequelize.import('./models/drzava.js');  NEMA MODELA DRZAVE
 var konacna_ocjena = db.sequelize.import('./models/konacna_ocjena.js');
 var mjesto = db.sequelize.import('./models/mjesto.js');
 var nastavnik_predmet = db.sequelize.import('./models/nastavnik_predmet.js');
@@ -49,8 +49,9 @@ konacna_ocjena.belongsTo(akademska_godina,{foreignKey:'akademska_godina'});
 
 var db = {};
 db.akademska_godina = akademska_godina;
-/*db.akademska_godina_predmet = akademska_godina_predmet;
-//db.drzava = drzava;
+db.akademska_godina_predmet = akademska_godina_predmet;
+db.sequelize=new Sequelize(config.database, config.username, config.password, config.options)
+/*db.drzava = drzava;
 db.mjesto = mjesto;
 db.konacna_ocjena = konacna_ocjena;
 db.nastavnik_predmet = nastavnik_predmet;
@@ -80,3 +81,5 @@ db.sequelize.sync({
         console.log('Unable to connect to the database:', err);
     });
 */
+
+exports.db=db;
