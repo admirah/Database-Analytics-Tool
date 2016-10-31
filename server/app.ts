@@ -2,9 +2,8 @@ import * as express from "express";
 import { join } from "path";
 import * as favicon from "serve-favicon";
 import { json, urlencoded } from "body-parser";
+import { studentiRouter } from './routes/studenti.js';
 
-import { loginRouter } from "./routes/login";
-import { protectedRouter } from "./routes/protected";
 
 const app: express.Application = express();
 app.disable("x-powered-by");
@@ -15,10 +14,7 @@ app.use(express.static(join(__dirname, '../public')));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-// api routes
-app.use("/api", protectedRouter);
-app.use("/login", loginRouter);
-
+app.use("/studenti", studentiRouter);
 app.use('/client', express.static(join(__dirname, '../client')));
 
 // error handlers

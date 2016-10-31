@@ -14,17 +14,17 @@ var db = {
 };
 
 
-var akademska_godina = sequelize.import('./models/akademska_godina.js');
-var akademska_godina_predmet = sequelize.import('./models/akademska_godina_predmet.js');
-var drzava = sequelize.import('./models/drzava.js');
-var konacna_ocjena = sequelize.import('./models/konacna_ocjena.js');
-var mjesto = sequelize.import('./models/mjesto.js');
-var nastavnik_predmet = sequelize.import('./models/nastavnik_predmet.js');
-var opcina = sequelize.import('./models/opcina.js');
-var osoba = sequelize.import('./models/osoba.js');
-var predmet = sequelize.import('./models/predmet.js');
-drzava.hasMany(mjesto);
-mjesto.belongsTo(drzava,{foreignKey:'drzava'});
+var akademska_godina = db.sequelize.import('./models/akademska_godina.js');
+/*var akademska_godina_predmet = db.sequelize.import('./models/akademska_godina_predmet.js');
+//var drzava = db.sequelize.import('./models/drzava.js');  NEMA MODELA DRZAVE
+var konacna_ocjena = db.sequelize.import('./models/konacna_ocjena.js');
+var mjesto = db.sequelize.import('./models/mjesto.js');
+var nastavnik_predmet = db.sequelize.import('./models/nastavnik_predmet.js');
+var opcina = db.sequelize.import('./models/opcina.js');
+var osoba = db.sequelize.import('./models/osoba.js');
+var predmet = db.sequelize.import('./models/predmet.js');
+//drzava.hasMany(mjesto);
+//mjesto.belongsTo(drzava,{foreignKey:'drzava'});
 osoba.hasMany(nastavnik_predmet);
 akademska_godina.hasMany(nastavnik_predmet);
 predmet.hasMany(nastavnik_predmet);
@@ -45,18 +45,18 @@ akademska_godina.hasMany(konacna_ocjena);
 konacna_ocjena.belongsTo(student,{foreignKey:'student'});
 konacna_ocjena.belongsTo(predmet,{foreignKey:'predmet'});
 konacna_ocjena.belongsTo(akademska_godina,{foreignKey:'akademska_godina'});
-
+*/
 
 var db = {};
 db.akademska_godina = akademska_godina;
-db.akademska_godina_predmet = akademska_godina_predmet;
-db.drzava = drzava;
+/*db.akademska_godina_predmet = akademska_godina_predmet;
+//db.drzava = drzava;
 db.mjesto = mjesto;
 db.konacna_ocjena = konacna_ocjena;
 db.nastavnik_predmet = nastavnik_predmet;
 db.opcina = opcina;
 db.osoba = osoba;
-db.predmet = predmet;
+db.predmet = predmet;*/
 module.exports = db;
 
 
@@ -71,7 +71,7 @@ db.sequelize.sync({
 db.sequelize.sync({
     force: true
 });*/
-db.sequelize
+/*db.sequelize
     .authenticate()
     .then(function(err) {
         console.log('Connection has been established successfully.');
@@ -79,6 +79,4 @@ db.sequelize
     .catch(function(err) {
         console.log('Unable to connect to the database:', err);
     });
-
-
-module.exports = {};
+*/
