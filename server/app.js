@@ -1,44 +1,24 @@
-"use strict";
-var express = require("express");
-var path_1 = require("path");
-var favicon = require("serve-favicon");
-var body_parser_1 = require("body-parser");
-var studenti_js_1 = require('./routes/studenti.js');
+/**
+ * Main application file
+ */
+
+'use strict';
+
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+var express = require('express');
+var config = require('./config/environment');
+// Setup server
 var app = express();
-exports.app = app;
-app.disable("x-powered-by");
-app.use(favicon(path_1.join(__dirname, "../public", "favicon.ico")));
-app.use(express.static(path_1.join(__dirname, '../public')));
-app.use(body_parser_1.json());
-app.use(body_parser_1.urlencoded({ extended: true }));
-app.use("/studenti", studenti_js_1.studentiRouter);
-app.use('/client', express.static(path_1.join(__dirname, '../client')));
-// error handlers
-// development error handler
-// will print stacktrace
-if (app.get("env") === "development") {
-    app.use(express.static(path_1.join(__dirname, '../node_modules')));
-    app.use(express.static(path_1.join(__dirname, '../tools')));
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.json({
-            error: err,
-            message: err.message
-        });
-    });
-}
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error("Not Found");
-    next(err);
+var server = require('http').createServer(app);
+require('./config/express')(app);
+require('./routes')(app);
+
+// Start server
+server.listen(config.port, config.ip, function () {
+  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
-// production error handler
-// no stacktrace leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-        error: {},
-        message: err.message
-    });
-});
-//# sourceMappingURL=app.js.map
+
+// Expose app
+exports = module.exports = app;
