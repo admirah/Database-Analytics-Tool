@@ -14,11 +14,12 @@
     "jquery": "latest",
     "jquery-ui": "latest",
     "angular-nvd3": "latest",
-	"materialize": "latest"
+    "materialize": "latest"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
-    "angular-scenario": ">=1.2.*"
+    "angular-scenario": ">=1.2.*",
+    "livereload-js": "^2.2.1"
   },
   "resolutions": {
     "angular": "latest"
