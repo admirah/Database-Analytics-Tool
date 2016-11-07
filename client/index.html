@@ -23,8 +23,6 @@
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
     <!-- injector:css -->
-    <link rel="stylesheet" href="app/app.css">
-    <link rel="stylesheet" href="app/main/main.css">
     <!-- endinjector -->
     <!-- endbuild -->
 </head>
@@ -36,8 +34,8 @@
     <ng-include src="'components/navbar/navbar.html'"></ng-include>
     <!-- Add your site or application content here -->
     <div class="row">
-            <ng-include class="col s2" src="'components/sidenav/sidenav.html'"></ng-include>
-        <div ui-view="" class="col s10"></div>
+            <ng-include src="'components/sidenav/sidenav.html'"></ng-include>
+        <div ui-view="" class="col s10 m10 push-s2 push-m2"></div>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -85,6 +83,12 @@
     <!-- injector:js -->
     <script src="app/main/main.controller.js"></script>
     <script src="app/main/main.js"></script>
+    <!-- endinjector -->
+    <!-- endbuild -->
+</body>
+
+</html>
+pt src="app/main/main.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->
 </body>
