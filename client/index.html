@@ -16,7 +16,9 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
     <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css" />
     <!-- endbower -->
     <!-- endbuild -->
@@ -36,8 +38,8 @@
     <ng-include src="'components/navbar/navbar.html'"></ng-include>
     <!-- Add your site or application content here -->
     <div class="row">
-            <ng-include class="col s2" src="'components/sidenav/sidenav.html'"></ng-include>
-        <div ui-view="" class="col s10"></div>
+         <!--  <div class="col s1"> <ng-include  src="'components/sidenav/sidenav.html'"></ng-include> </div-->
+        <div ui-view="" class="col s10 offset-s2"></div>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -69,7 +71,6 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/nvd3/build/nv.d3.js"></script>
