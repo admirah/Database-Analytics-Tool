@@ -2,6 +2,7 @@
 
 angular.module('datApp')
   .controller('MainCtrl', function ($scope, $http) {
+    console.log(1);
     $('select').material_select();
     $(document).ready(function(){
       $('.collapsible').collapsible();
@@ -42,7 +43,7 @@ angular.module('datApp')
         console.log(response.data);
         $scope.years.values=response.data;
       })
-    }
+    };
 
 
     $scope.optionsGradesYears= {
@@ -181,4 +182,3 @@ function stream_index(d, i) {
   return {x: i, series: dataglobal[i]["naziv"], y: Math.max(0, d)};
 
 }
-
