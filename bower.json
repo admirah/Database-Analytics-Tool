@@ -5,6 +5,7 @@
     "angular": "latest",
     "json3": "~3.3.1",
     "es5-shim": "~4.5.9",
+    "async": "latest",
     "angular-resource": ">=1.2.*",
     "angular-cookies": ">=1.2.*",
     "angular-sanitize": ">=1.2.*",
@@ -14,7 +15,9 @@
     "jquery": "latest",
     "jquery-ui": "latest",
     "angular-nvd3": "latest",
-    "materialize": "latest"
+    "materialize": "latest",
+    "jspdf": "latest",
+    "angular-material": "^1.1.1"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
