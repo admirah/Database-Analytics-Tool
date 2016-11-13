@@ -9,7 +9,7 @@ angular.module('datApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/generalreports');
 
     $locationProvider.html5Mode(true);
   });
