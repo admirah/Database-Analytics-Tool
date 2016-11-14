@@ -97,7 +97,9 @@ angular.module('datApp')
       }
     }
 
-
+$scope.removeWidget = function(id){
+  $('#'+id).remove();
+}
 
 $scope.$watch('years.model', function (newVal, oldVal) {
   if ($scope.years.model != null && $scope.subjects.model != null) {
@@ -187,4 +189,3 @@ function stream_index(d, i) {
   return {x: i, series: dataglobal[i]["naziv"], y: Math.max(0, d)};
 
 }
-

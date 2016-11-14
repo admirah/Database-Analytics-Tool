@@ -4,7 +4,6 @@
     <div class="row">
 
       <div class="col s6 m6">
-
         <select
           class="browser-default"
           ng-model="years.model"
@@ -28,8 +27,11 @@
     </div>
   </div>
   <div class="row grid">
-    <div ng-repeat="graph in graphs" class="col s6 m6">
+    <div ng-repeat="graph in graphs track by $index" class="col s6 m6" id="{{$index}}">
       <div class="card white darken-1">
+        <md-button class="md-icon-button" ng-click="removeWidget($index)">
+        <md-icon md-svg-src="assets/images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+    </md-button>
         <div class="card-content black-text">
           <ul class="collapsible" data-collapsible="accordion">
             <li>
