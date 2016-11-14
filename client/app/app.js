@@ -5,7 +5,8 @@ angular.module('datApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'nvd3'
+  'nvd3',
+  'ngMaterial'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
