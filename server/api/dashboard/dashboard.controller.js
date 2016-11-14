@@ -26,7 +26,7 @@ exports.getStudentGrades = function(req, res) {
   console.log("ansifjsiofjsdigjsiogjiojg");
   sequelize.query("SElECT DISTINCT CONCAT(x.ime,' ',x.prezime) as 'ime', p.naziv , " +
     "  o.ocjena from predmet p, konacna_ocjena o,osoba x where x.id=o.student " +
-    "and p.id =o.predmet  and o.student" + req.params.id, {type: sequelize.QueryTypes.SELECT})
+    "and p.id =o.predmet  and o.student = " + req.params.id, {type: sequelize.QueryTypes.SELECT})
     .then(function (users) {
       return res.json(users);
     });

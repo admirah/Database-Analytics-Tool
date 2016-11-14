@@ -23,6 +23,11 @@ angular.module('datApp')
       values: [
       ]
     };
+
+    $scope.removeWidget = function(id) {
+      jQuery('#'+id).remove();
+    };
+
     $scope.loadData=function(){
 
 

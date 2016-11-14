@@ -1,6 +1,9 @@
 <!-- prvi red -->
 <div ng-init="loadData()">
-  <div class="row z-depth-2">
+  <div class="row z-depth-2" id="1">
+    <md-button class="md-icon-button" ng-click="removeWidget(1)">
+    <md-icon md-svg-src="assets/images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+</md-button>
     <div class="col s12 m12">
       <div class="card white-grey darken-1">
         <div class="card-content black-text">
@@ -21,7 +24,11 @@
     </div>
   </div>
   <!-- drugi red -->
-  <div class="row z-depth-2">
+  <div class="row z-depth-2" id="2">
+    <div class="row">
+    <md-button class="md-icon-button" ng-click="removeWidget(2)">
+    <md-icon md-svg-src="assets/images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+</md-button></div>
     <div class="col s8 m8">
       <div class="card white darken-1">
         <div class="card-content black-text">
@@ -98,7 +105,10 @@
   </div>
 
   <!-- treci red -->
-  <div class="row z-depth-2">
+  <div class="row z-depth-2" id="3">
+    <md-button class="md-icon-button" ng-click="removeWidget(3)">
+    <md-icon md-svg-src="assets/images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+</md-button>
     <div class="col s12 m12">
       <div class="card white-grey darken-1">
         <div class="card-content black-text">
