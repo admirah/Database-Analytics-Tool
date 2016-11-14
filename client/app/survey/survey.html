@@ -10,7 +10,9 @@
           ng-model="years.model"
           ng-options="option.naziv for option in years.values"
           value="{{option.naziv}}"
-        ></select>
+        >
+          <option value="" disabled selected>Odaberite akademsku godinu</option>
+        </select>
       </div>
       <div class="col s6 m6">
 
@@ -19,7 +21,9 @@
           ng-model="subjects.model"
           ng-options="option.naziv for option in subjects.values"
           value="{{option.naziv}}"
-        ></select>
+        >
+          <option value="" disabled selected>Odaberite predmet</option>
+        </select>
       </div>
     </div>
   </div>
