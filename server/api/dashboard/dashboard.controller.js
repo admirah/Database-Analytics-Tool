@@ -66,3 +66,41 @@ exports.getYears=function(req,res){
     });
 }
 
+
+exports.getSubjects = function (req, res) {
+
+  console.log("admirica je sad");
+  sequelize.query("select id , naziv from predmet", {type: sequelize.QueryTypes.SELECT})
+    .then(function (users) {
+      return res.json(users);
+    });
+}
+
+
+exports.getSurveyData = function (req, res) {
+  sequelize.query("select id , tekst from ank_pitanje", {type: sequelize.QueryTypes.SELECT})
+    .then(function (users) {
+      var resp = [];
+      var i = 0;
+      users.forEach(function (user) {
+
+        var n = {key: user.tekst, values: {}}
+
+        sequelize.query("SELECT odgovor as 'label', count(aso.id) as 'value' FROM anketa_student_odgovor aso, anketa a," +
+            " predmet p, ank_pitanje ap,predmet_pitanje pp where aso.pitanje_predmet=pp.id AND pp.pitanje=ap.id and " +
+            "pp.predmet=p.id and pp.anketa=a.id and a.akademska_godina=" + req.params.ag + " and p.id=" + req.params.pr + " AND ap.id=" + user.id +
+            " group by odgovor", {type: sequelize.QueryTypes.SELECT})
+          .then(function (data) {
+            i++;
+            n.values = data;
+            resp.push(n);
+
+            if (i == users.length) return res.json(resp);
+
+
+          });
+
+
+      })
+
+    });}

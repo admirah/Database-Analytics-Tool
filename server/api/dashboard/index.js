@@ -14,6 +14,8 @@ router.get('/getGradesByYear/:id',controller.getGradesByYear);
 
 router.get('/getStudents',controller.getStudents);
 
+router.get('/getSubjects',controller.getSubjects);
+router.get('/getSurveyData/:ag/:pr',controller.getSurveyData);
 module.exports = router;/**
  * Created by Admira on 07.11.2016..
  */

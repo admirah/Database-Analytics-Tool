@@ -1,0 +1,50 @@
+<!-- prvi red -->
+<div ng-init="loadData()">
+  <div>
+    <div class="row">
+
+      <div class="col s6 m6">
+
+        <select
+          class="browser-default"
+          ng-model="years.model"
+          ng-options="option.naziv for option in years.values"
+          value="{{option.naziv}}"
+        ></select>
+      </div>
+      <div class="col s6 m6">
+
+        <select
+          class="browser-default"
+          ng-model="subjects.model"
+          ng-options="option.naziv for option in subjects.values"
+          value="{{option.naziv}}"
+        ></select>
+      </div>
+    </div>
+  </div>
+  <div class="row grid">
+    <div ng-repeat="graph in graphs" class="col s6 m6">
+      <div class="card white darken-1">
+        <div class="card-content black-text">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header">{{graph.title}}</div>
+            </li>
+          </ul>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <a ng-click="promijeniTabelaBar(graph)"> <img src="../../images/charticon.png"></a>
+              <a ng-click="promijeniTabelaPie(graph)" style=" margin:0 20px">  <img src="../../images/pieicon.png"></a>
+
+            </li>
+          </ul>
+          <nvd3 ng-if="graph.type==2" options="graph.options" data="graph.data"></nvd3>
+
+          <nvd3 ng-if="graph.type==1" options="graph.options" data="graph.fullData"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
