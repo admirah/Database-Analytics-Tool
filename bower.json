@@ -2,6 +2,8 @@
   "name": "dat",
   "version": "0.0.0",
   "dependencies": {
+    "jquery": "3.1.1",
+    "jquery-ui": "latest",
     "angular": "latest",
     "json3": "~3.3.1",
     "es5-shim": "~4.5.9",
@@ -12,19 +14,16 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~4.16.1",
     "angular-ui-router": "~1.0.0-beta.2",
-    "jquery": "latest",
-    "jquery-ui": "latest",
     "angular-nvd3": "latest",
     "materialize": "latest",
-    "jspdf": "latest",
-    "angular-material": "^1.1.1"
+    "angular-material": "^1.1.1",
+    "angular-file-saver": "^1.1.2"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
-    "angular-scenario": ">=1.2.*",
-    "livereload-js": "^2.2.1"
+    "angular-scenario": ">=1.2.*"
   },
   "resolutions": {
-    "angular": "latest"
+    "angular": "1.5.9"
   }
 }

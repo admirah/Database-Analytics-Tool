@@ -1,4 +1,4 @@
-angular.module('datApp').directive('topdf', [ function() {
+angular.module('datApp').directive('topdf', ['$http', 'FileSaver', 'Blob', function($http, FileSaver, Blob) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -11,27 +11,18 @@ angular.module('datApp').directive('topdf', [ function() {
             };
 
             element.bind('click', function() {
-                var dateTime = new Date();
-                var doc = new jsPDF('l', 'pt', 'a4');
-                doc.page = 1;
-                var source = $('body > div.row > div > div > div');
-                addPageNumber(doc, dateTime);
-                async.eachSeries(source, function(div, callback) {
-                        if (div != source[0]) {
-                            doc.addPage();
-                            addPageNumber(doc, dateTime);
-                        }
-                        doc.addHTML(div, function() {
-                            callback();
-                        })
-                    },
-                    function(err) {
-                        if (err) {
-                            console.log('Greska prilikom generiranje pdf izvjestaja');
-                        } else {
-                            doc.save("database_analytics_tool_report_" + ".pdf");
-                        }
-                    });
+                var divs = $('.topdf');
+                div_elems = [];
+                div_elems.push("<h1>"+ new Date() + " Database Analytics Tool Report" + "</h1></br>");
+                for(var i = 0 ; i < divs.length; ++i){
+                  div_elems.push(divs[i].outerHTML + "</br>");
+                }
+
+                $http.post('/api/dashboard/topdf', {elems: div_elems},{responseType:'arraybuffer'}).then(function(res){
+                  var file = new Blob([res.data], { type: 'application/pdf' });
+                  var fileURL = URL.createObjectURL(file);
+                  window.open(fileURL);
+                });
             });
         }
     }
