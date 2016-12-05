@@ -17,6 +17,7 @@ router.get('/getStudents',controller.getStudents);
 router.get('/getSubjects',controller.getSubjects);
 router.get('/getSurveyData/:ag/:pr',controller.getSurveyData);
 
+router.get('/projectNumberOfStudents/:predmetId', controller.projectNumberOfStudents);
 router.post('/topdf', controller.toPdf);
 module.exports = router;/**
  * Created by Admira on 07.11.2016..

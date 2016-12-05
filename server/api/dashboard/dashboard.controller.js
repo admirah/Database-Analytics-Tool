@@ -88,8 +88,36 @@ exports.getSubjects = function(req, res) {
         });
 }
 
-exports.projectNumberOfStudents = function(req, res){
-  sequelize.query("SELECT akademska_godina, Count(*) FROM student_predmet WHERE predmet = 5 GROUP BY akademska_godina")
+exports.projectNumberOfStudents = function(req, res) {
+    sequelize.query("SELECT akademska_godina, Count(*) broj_studenata FROM student_predmet WHERE predmet = :predmet_id GROUP BY akademska_godina", {
+        replacements: {
+            predmet_id: req.params["predmetId"]
+        },
+        type: sequelize.QueryTypes.SELECT
+    }).then(function(result) {
+        var x = result.map(function(obj) {
+            return obj.akademska_godina;
+        });
+        var y = result.map(function(obj) {
+            return obj.broj_studenata;
+        });
+        var LinearRegression = require('shaman').LinearRegression;
+        var lr = new LinearRegression(x, y);
+        var naziviGodina = ['2008/09', '2009/10', '2010/11', '2011/12', '2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20'];
+        var niz = [];
+        lr.train(function(err) {
+            if (err) {
+                throw err;
+            }
+            for (var i = 0; i < x.length; i++) {
+              niz.push([x[i], y[i]]);
+            }
+            niz.push([10, parseInt(lr.predict(1))]);
+            niz.push([11, parseInt(lr.predict(2))]);
+            niz.push([12, parseInt(lr.predict(3))]);
+        })
+        res.json({values: niz, nazivi: naziviGodina});
+    });
 };
 
 exports.getSurveyData = function(req, res) {
@@ -129,15 +157,15 @@ exports.getSurveyData = function(req, res) {
 }
 
 exports.toPdf = function(req, res) {
-  var path=require('path');
-  var mime=require('mime');
-  var fs = require('fs');
-      var pdfPath = "./tmp/report.pdf";
-        wkhtmltopdf(req.body.elems.join(" "), {
-            output: pdfPath
-        });
-        res.download(pdfPath);
-        /*
+    var path = require('path');
+    var mime = require('mime');
+    var fs = require('fs');
+    var pdfPath = "./tmp/report.pdf";
+    wkhtmltopdf(req.body.elems.join(" "), {
+        output: pdfPath
+    });
+    res.download(pdfPath);
+    /*
         var file = pdfPath;
         var filename = path.basename(file);
         var mimetype = mime.lookup(file);

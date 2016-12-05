@@ -15,12 +15,7 @@
       </div>
       <div class="col s6 m6">
 
-        <select
-          class="browser-default"
-          ng-model="subjects.model"
-          ng-options="option.naziv for option in subjects.values"
-          value="{{option.naziv}}"
-        >
+<select class="browser-default" ng-model="subjects.model" ng-options="option.naziv for option in subjects.values" value="{{option.naziv}}">
           <option value="" disabled selected>Odaberite predmet</option>
         </select>
       </div>
