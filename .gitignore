@@ -2,3 +2,4 @@
 node_modules
 dist
 client/bower_components
+bower_components

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('datApp')
-  .controller('GeneralCtrl', function ($scope, $http) {
+  .controller('GeneralCtrl', function ($scope, $http, $state) {
+    console.log($state.current.name);
     $('select').material_select();
     $(document).ready(function(){
       $('.collapsible').collapsible();

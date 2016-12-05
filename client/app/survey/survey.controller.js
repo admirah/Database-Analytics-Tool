@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('datApp')
-  .controller('SurveyCtrl', function ($scope, $http, $rootScope) {
+  .controller('SurveyCtrl', function ($scope, $http, $rootScope, $state) {
+    console.log($state.current.name);
 
     $scope.subjects = {
       model: null,

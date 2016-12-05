@@ -88,6 +88,9 @@ exports.getSubjects = function(req, res) {
         });
 }
 
+exports.projectNumberOfStudents = function(req, res){
+  sequelize.query("SELECT akademska_godina, Count(*) FROM student_predmet WHERE predmet = 5 GROUP BY akademska_godina")
+};
 
 exports.getSurveyData = function(req, res) {
     sequelize.query("select id , tekst from ank_pitanje", {

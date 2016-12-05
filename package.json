@@ -22,7 +22,8 @@
     "nvd3": "^1.8.4",
     "sequelize": "^3.24.8",
     "serve-favicon": "~2.3.0",
-    "wkhtmltopdf": "^0.3.3"
+    "wkhtmltopdf": "^0.3.3",
+    "shaman": "latest"
   },
   "devDependencies": {
     "grunt": "~1.0.1",

@@ -2,18 +2,11 @@ angular.module('datApp').directive('topdf', ['$http', 'FileSaver', 'Blob', funct
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            function addPageNumber(doc, dateTime) {
-                doc.setFontSize(9);
-                doc.text(doc.internal.pageSize.width - 35, doc.internal.pageSize.height - 10, 'Page ' + doc.page); //print number bottom right
-                doc.page++;
-                doc.setFontSize(10);
-                doc.text(10, doc.internal.pageSize.height - 10, 'Database Analytics Tool Report ' + dateTime);
-            };
 
             element.bind('click', function() {
                 var divs = $('.topdf');
                 div_elems = [];
-                div_elems.push("<h1>"+ new Date() + " Database Analytics Tool Report" + "</h1></br>");
+                div_elems.push("<h1>"+ new Date() + " Database Analytics Tool Report" + '<p style="margin-bottom: 60px"></p>');
                 for(var i = 0 ; i < divs.length; ++i){
                   div_elems.push(divs[i].outerHTML + "</br>");
                 }
