@@ -72,8 +72,22 @@
           ng-options="option.naziv for option in subjects.values"
           value="{{option.naziv}}"
         ></select>
+  <md-select ng-model="filter" placeholder="Filtriranje">
+    <md-option value="1">Svi komentari</md-option>
+    <md-option value="2">Samo pozitivni</md-option>
+    <md-option value="3">Samo negativni</md-option>
+    <md-option value="4">Sa ključnom rječju</md-option>
+  </md-select>
+  <div ng-if="filter==4">  <label >Ključna riječ</label>
+    <input id="kljucna" type="text" name="kljucnaRijec"></div>
 
-
+  </br>
+        <md-button class="md-raised" ng-click="prikaziKomentare(predmetKomentari, godinaKomentari, filter, kljucnaRijec)">Prikaži komentare</md-button>
+        <div>
+          <md-card ng-repeat="komentar in komentari">
+          <p>{{komentar.komentar}}</p>
+        </md-card>
+        </div>
       </div>
       <!--div class="card-action">
         <a href="#">This is a link</a>

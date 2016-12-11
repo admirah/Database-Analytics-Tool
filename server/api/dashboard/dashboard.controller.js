@@ -88,16 +88,38 @@ exports.getSubjects = function(req, res) {
         });
 }
 
-exports.getComments = function(req, res){
-  sequelize.query("SELECT komentar FROM anketa_komentar WHERE predmet_id = :predmet AND akademska_godina = :akademska", {
-    replacements: {
-      predmet: req.params["predmetId"],
-      akademska: req.params["academicYear"]
-    },
-    type: sequelize.QueryTypes.SELECT
-  }).then(function(result){
-    res.json(result);
-  })
+exports.getComments = function(req, res) {
+    sequelize.query("SELECT komentar FROM anketa_komentar WHERE predmet_id = :predmet AND akademska_godina = :akademska", {
+        replacements: {
+            predmet: req.params["predmetId"],
+            akademska: req.params["academicYear"]
+        },
+        type: sequelize.QueryTypes.SELECT
+    }).then(function(result) {
+        var arr = [];
+        var pozitivno = "velit";
+        var negativno = "luctus";
+        var kljucnaRijec = req.params["kljucnaRijec"];
+        if (parseInt(req.params["filter"]) == 1) {
+            return res.json(result);
+        } else if (parseInt(req.params["filter"]) == 2) { //samo pozitivni
+          for(var i = 0; i < result.length; ++i){
+            if(result[i].komentar.indexOf(pozitivno) != -1) arr.push(result[i]);
+          }
+        } else if(parseInt(req.params["filter"]) == 3)//samo negativni
+        {
+          for(var i = 0; i < result.length; ++i){
+            if(result[i].komentar.indexOf(negativno) != -1) arr.push(result[i]);
+          }
+        }
+        else{//kljucna rijec
+          for(var i = 0; i < result.length; ++i){
+            if(result[i].komentar.indexOf(kljucnaRijec) != -1) arr.push(result[i]);
+          }
+        }
+        res.json(arr);
+    });
+
 };
 
 exports.projectNumberOfStudents = function(req, res) {
@@ -122,13 +144,16 @@ exports.projectNumberOfStudents = function(req, res) {
                 throw err;
             }
             for (var i = 0; i < x.length; i++) {
-              niz.push([x[i], y[i]]);
+                niz.push([x[i], y[i]]);
             }
             niz.push([10, parseInt(lr.predict(1))]);
             niz.push([11, parseInt(lr.predict(2))]);
             niz.push([12, parseInt(lr.predict(3))]);
         })
-        res.json({values: niz, nazivi: naziviGodina});
+        res.json({
+            values: niz,
+            nazivi: naziviGodina
+        });
     });
 };
 

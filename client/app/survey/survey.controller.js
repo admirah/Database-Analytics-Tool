@@ -4,12 +4,19 @@ angular.module('datApp')
   .controller('SurveyCtrl', function ($scope, $http, $rootScope, $state) {
     $scope.godinaKomentari = "";
     $scope.predmetKomentari = "";
+    $scope.kljucnaRijec = " ";
     $scope.subjects = {
       model: null,
       values: []
     };
 
+    $scope.prikaziKomentare = function(predmetid, akademska, filter, kljucnaRijec){
+      var kljucna = $("#kljucna")[0].value;
 
+      $http.get('/api/dashboard/getCommentsForSubject/' + predmetid.id +"/"+akademska.id +"/"+filter+"/"+kljucna).then(function(response){
+        $scope.komentari = response.data;
+      });
+    }
     $scope.years = {
       model: null,
       values: []
