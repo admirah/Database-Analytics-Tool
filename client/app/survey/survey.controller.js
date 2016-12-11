@@ -2,8 +2,8 @@
 
 angular.module('datApp')
   .controller('SurveyCtrl', function ($scope, $http, $rootScope, $state) {
-    console.log($state.current.name);
-
+    $scope.godinaKomentari = "";
+    $scope.predmetKomentari = "";
     $scope.subjects = {
       model: null,
       values: []
@@ -30,7 +30,6 @@ angular.module('datApp')
 
     $scope.loadData = function () {
       $http.get('api/dashboard/getSubjects').then(function (response) {
-
         $scope.subjects.values = response.data;
       })
       $http.get('api/dashboard/getYears').then(function (response) {

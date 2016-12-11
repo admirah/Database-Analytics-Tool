@@ -19,6 +19,8 @@ router.get('/getSurveyData/:ag/:pr',controller.getSurveyData);
 
 router.get('/projectNumberOfStudents/:predmetId', controller.projectNumberOfStudents);
 router.post('/topdf', controller.toPdf);
+
+router.get('/getCommentsForSubject/:predmetId/:academicYear', controller.getComments);
 module.exports = router;/**
  * Created by Admira on 07.11.2016..
  */

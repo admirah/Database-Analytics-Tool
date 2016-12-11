@@ -88,6 +88,18 @@ exports.getSubjects = function(req, res) {
         });
 }
 
+exports.getComments = function(req, res){
+  sequelize.query("SELECT komentar FROM anketa_komentar WHERE predmet_id = :predmet AND akademska_godina = :akademska", {
+    replacements: {
+      predmet: req.params["predmetId"],
+      akademska: req.params["academicYear"]
+    },
+    type: sequelize.QueryTypes.SELECT
+  }).then(function(result){
+    res.json(result);
+  })
+};
+
 exports.projectNumberOfStudents = function(req, res) {
     sequelize.query("SELECT akademska_godina, Count(*) broj_studenata FROM student_predmet WHERE predmet = :predmet_id GROUP BY akademska_godina", {
         replacements: {

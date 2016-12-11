@@ -47,5 +47,39 @@
       </div>
     </div>
   </div>
-</div>
+
+  <div class="col s12 m12">
+    <div class="card white darken-1">
+      <div class="card-content black-text">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">Komentari</div>
+            <div class="collapsible-body"><p>Pregled anketnih komentara za izabrani predmet i akademsku godinu</p></div>
+          </li>
+
+        </ul>
+        <label>Akademska godina</label>
+        <select
+          class="browser-default"
+          ng-model="godinaKomentari"
+          ng-options="option.naziv for option in years.values"
+          value="{{option.naziv}}"
+        ></select>
+        <label>Predmet</label>
+        <select
+          class="browser-default"
+          ng-model="predmetKomentari"
+          ng-options="option.naziv for option in subjects.values"
+          value="{{option.naziv}}"
+        ></select>
+
+
+      </div>
+      <!--div class="card-action">
+        <a href="#">This is a link</a>
+        <a href="#">This is a link</a>
+      </div-->
+    </div>
+  </div>
+
 </div>
