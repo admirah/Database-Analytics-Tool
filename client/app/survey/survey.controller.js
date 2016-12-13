@@ -11,11 +11,14 @@ angular.module('datApp')
     };
 
     $scope.prikaziKomentare = function(predmetid, akademska, filter, kljucnaRijec){
-      var kljucna = $("#kljucna")[0].value;
-
+      var kljucna = "dummy";
+      if($("#kljucna")[0]){
+        var kljucna = $("#kljucna")[0].value;
+      }
       $http.get('/api/dashboard/getCommentsForSubject/' + predmetid.id +"/"+akademska.id +"/"+filter+"/"+kljucna).then(function(response){
         $scope.komentari = response.data;
       });
+      kljucna = "";
     }
     $scope.years = {
       model: null,
