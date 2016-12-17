@@ -216,3 +216,28 @@ filestream.on('close', function (error) {
   fs.unlink(pdfPath);});*/
 
 };
+
+exports.updateImenaPredmeta = function(req, res){
+  var prviDio = ["Diskretna", "Analogna", "Električna", "Inženjerska", "Osnove", "Linearni", "Praktikum", "Električne", "Numerički", "Operativni", "Sistemsko", "Logički", "Napredna", "Operaciona", "Objektna", "Elektrotehnička", "Računarsko", "Vještačka", "Informaciona"];
+  var drugiDio = ["Matematika","Fizika", "Sistemi", "Ekonomika", "Elektronika", "Programiranje", "Mašine", "Senzori", "Mreže", "Modeliranje", "Elektromagnetika"]
+  var id = 1;
+  console.log("STARTING");
+  for (var i = 0; i < prviDio.length; i++) {
+    var firstPart = prviDio[i];
+    var fs = require('fs');
+    var logger = fs.createWriteStream('log.txt', {
+  flags: 'a' // 'a' means appending (old data will be preserv
+});
+
+    for (var j = 0; j < drugiDio.length; j++) {
+      if(id >= 201) break;
+      var secondPart = drugiDio[j];
+      console.log(id);
+      var str =  "UPDATE predmet SET naziv = \'" + firstPart + " " + secondPart+ "\', kratki_naziv = \'" +  firstPart.substr(0,2) + secondPart.substr(0,1) + "\' WHERE id = " + id + ";";
+      logger.write(str) // append string to your file
+
+        id++;
+    }
+  }
+  return res.send("OK");
+};
