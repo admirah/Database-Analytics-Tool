@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('datApp')
-  .controller('SurveyCtrl', function ($scope, $http, $rootScope, $state) {
+  .controller('SurveyCtrl', function ($scope, $http, $rootScope, $state, $timeout) {
     $scope.godinaKomentari = "";
     $scope.predmetKomentari = "";
     $scope.kljucnaRijec = " ";
@@ -17,8 +17,18 @@ angular.module('datApp')
       }
       $http.get('/api/dashboard/getCommentsForSubject/' + predmetid.id +"/"+akademska.id +"/"+filter+"/"+kljucna).then(function(response){
         $scope.komentari = response.data;
+        $timeout(function() {
+          var komentari = document.querySelectorAll('.komentar');
+          for(var i = 0; i < komentari.length; ++i){
+            var rgxp = new RegExp(kljucna, 'g');
+    var repl = '<span class="myClass" style="background-color: yellow;">' + kljucna + '</span>';
+
+    komentari[i].innerHTML = komentari[i].innerHTML.replace(rgxp, repl);
+          }
+          kljucna = "";
+});
+
       });
-      kljucna = "";
     }
     $scope.years = {
       model: null,
