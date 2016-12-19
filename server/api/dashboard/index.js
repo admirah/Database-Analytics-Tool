@@ -22,7 +22,6 @@ router.post('/topdf', controller.toPdf);
 
 router.get('/getCommentsForSubject/:predmetId/:academicYear/:filter/:kljucnaRijec', controller.getComments);
 
-router.get('/updateImenaPredmeta', controller.updateImenaPredmeta);
 module.exports = router;/**
  * Created by Admira on 07.11.2016..
  */

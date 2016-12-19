@@ -97,8 +97,8 @@ exports.getComments = function(req, res) {
         type: sequelize.QueryTypes.SELECT
     }).then(function(result) {
         var arr = [];
-        var pozitivno = "velit";
-        var negativno = "luctus";
+        var pozitivno = "good";
+        var negativno = "bad";
         var kljucnaRijec = req.params["kljucnaRijec"];
         if (parseInt(req.params["filter"]) == 1) {
             return res.json(result);
@@ -216,28 +216,26 @@ filestream.on('close', function (error) {
   fs.unlink(pdfPath);});*/
 
 };
-
+/*
 exports.updateImenaPredmeta = function(req, res){
-  var prviDio = ["Diskretna", "Analogna", "Električna", "Inženjerska", "Osnove", "Linearni", "Praktikum", "Električne", "Numerički", "Operativni", "Sistemsko", "Logički", "Napredna", "Operaciona", "Objektna", "Elektrotehnička", "Računarsko", "Vještačka", "Informaciona"];
-  var drugiDio = ["Matematika","Fizika", "Sistemi", "Ekonomika", "Elektronika", "Programiranje", "Mašine", "Senzori", "Mreže", "Modeliranje", "Elektromagnetika"]
-  var id = 1;
-  console.log("STARTING");
-  for (var i = 0; i < prviDio.length; i++) {
-    var firstPart = prviDio[i];
-    var fs = require('fs');
-    var logger = fs.createWriteStream('log.txt', {
-  flags: 'a' // 'a' means appending (old data will be preserv
-});
+  var fs = require('fs');
+  var randomWords = require('random-words');
 
-    for (var j = 0; j < drugiDio.length; j++) {
-      if(id >= 201) break;
-      var secondPart = drugiDio[j];
-      console.log(id);
-      var str =  "UPDATE predmet SET naziv = \'" + firstPart + " " + secondPart+ "\', kratki_naziv = \'" +  firstPart.substr(0,2) + secondPart.substr(0,1) + "\' WHERE id = " + id + ";";
-      logger.write(str) // append string to your file
-
-        id++;
-    }
+  function getRandNum(min, max){
+  	return Math.random() * (max - min) + min;
   }
+  var stream = fs.createWriteStream('log.sql', {'flags': 'a'});
+  for(var i = 1; i <= 100000; ++i){
+  	var str = "";
+  	var brRecenica = getRandNum(2, 10);
+  	for(var j = 0; j < brRecenica; ++j){
+  		var duzinaRec = getRandNum(5, 15);
+  		var recenica = randomWords({exactly: duzinaRec, join: " "}) + ". ";
+  		str += recenica;
+  	}
+  	var query = "UPDATE anketa_komentar SET komentar= \'" + str + "\'" + "WHERE id = " + i +";\n";
+          stream.write(query);
+  }
+
   return res.send("OK");
-};
+};*/
