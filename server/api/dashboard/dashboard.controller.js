@@ -97,25 +97,28 @@ exports.getComments = function(req, res) {
         type: sequelize.QueryTypes.SELECT
     }).then(function(result) {
         var arr = [];
-        var pozitivno = "good";
-        var negativno = "bad";
+        var pozitivno = ["good", "positive", "excellent", "great", "awesome", "fantastic", "quality", "interesting", "helpful", "valuable"];
+        var negativno = ["bad", "boring", "negative", "offensive", "shocking", "creepy", "crazy", "dishonest", "angry", "arrogant"];
         var kljucnaRijec = req.params["kljucnaRijec"];
         if (parseInt(req.params["filter"]) == 1) {
             return res.json(result);
         } else if (parseInt(req.params["filter"]) == 2) { //samo pozitivni
-          for(var i = 0; i < result.length; ++i){
-            if(result[i].komentar.indexOf(pozitivno) != -1) arr.push(result[i]);
-          }
-        } else if(parseInt(req.params["filter"]) == 3)//samo negativni
+            for (var i = 0; i < result.length; ++i) {
+                for (var j = 0; j < pozitivno.length; j++) {
+                    if (result[i].komentar.search(pozitivno[j]) > -1) {arr.push(result[i]); break;}
+                }
+            }
+        } else if (parseInt(req.params["filter"]) == 3) //samo negativni
         {
-          for(var i = 0; i < result.length; ++i){
-            if(result[i].komentar.indexOf(negativno) != -1) arr.push(result[i]);
-          }
-        }
-        else{//kljucna rijec
-          for(var i = 0; i < result.length; ++i){
-            if(result[i].komentar.indexOf(kljucnaRijec) != -1) arr.push(result[i]);
-          }
+            for (var i = 0; i < result.length; ++i) {
+                for (var j = 0; j < pozitivno.length; j++) {
+                    if (result[i].komentar.search(negativno[j]) > -1) {arr.push(result[i]); break;}
+                }
+            }
+        } else { //kljucna rijec
+            for (var i = 0; i < result.length; ++i) {
+                if (result[i].komentar.indexOf(kljucnaRijec) != -1) arr.push(result[i]);
+            }
         }
         res.json(arr);
     });

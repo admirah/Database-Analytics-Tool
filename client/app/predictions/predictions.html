@@ -1,4 +1,13 @@
-<select ng-change="iscrtaj(selectedPredmet)" class="browser-default" ng-model="selectedPredmet" ng-options="option.naziv for option in predmeti" value="{{option.naziv}}">
+<div class="row z-depth-2">
+  <div class="col s12 m12"><p>Predviđanje broja studenata na predmetu u narednim akademskim godinama.</p></div>
+
+    <div class="col s12 m12">
+       <div class=" card-content black-text ">
+
+        <select ng-change="iscrtaj(selectedPredmet)" class="browser-default" ng-model="selectedPredmet" ng-options="option.naziv for option in predmeti" value="{{option.naziv}}">
   <option value="" disabled selected>Odaberite predmet</option>
 </select>
-<nvd3 options="options" data="exampleData"></nvd3>
+        <nvd3 options="options" data="exampleData"></nvd3>
+    </div>
+</div>
+</div>
