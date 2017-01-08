@@ -46,6 +46,28 @@ exports.getStudents = function(req, res) {
             return res.json(users);
         });
 }
+exports.getGradesBySubject = function(req, res) {
+    var n=req.params.id;
+    n=n.replace("+"," ");
+    console.log("ansifjsiofjsdigjsiogjiojg");
+    sequelize.query("SElECT DISTINCT CONCAT(x.ime,' ',x.prezime) as 'ime', p.naziv as 'predmet', " +
+            "  o.ocjena from predmet p, konacna_ocjena o,osoba x where x.id=o.student " +
+            "and p.id =o.predmet  and o.student=x.id and CONCAT(x.ime,' ',x.prezime)='"+n+"'", {
+                type: sequelize.QueryTypes.SELECT
+            })
+        .then(function(users) {
+            return res.json(users);
+        });
+}
+exports.getGradesByStudent=function(req,res){
+ var n=req.params.id;
+    n=n.replace("+"," ");
+  console.log("elo jesi normalan"+n);
+  sequelize.query("select ocjena, count(*) as 'broj' from konacna_ocjena,osoba o where student=o.id && CONCAT(o.ime,' ',o.prezime)='"+n+"' group by ocjena", { type: sequelize.QueryTypes.SELECT })
+    .then(function (users) {
+      return res.json(users);
+    });
+}
 
 exports.getGradesByYears = function(req, res) {
 
@@ -97,8 +119,10 @@ exports.getComments = function(req, res) {
         type: sequelize.QueryTypes.SELECT
     }).then(function(result) {
         var arr = [];
-        var pozitivno = ["good", "positive", "excellent", "great", "awesome", "fantastic", "quality", "interesting", "helpful", "valuable"];
-        var negativno = ["bad", "boring", "negative", "offensive", "shocking", "creepy", "crazy", "dishonest", "angry", "arrogant"];
+        //var pozitivno = ["good", "positive", "excellent", "great", "awesome", "fantastic", "quality", "interesting", "helpful", "valuable"];
+        var pozitivno=["super","odlic","lako"," zanimlji","lako"];
+        var negativno=["los","grozn","nisu dob","nij","ile dosadn",". Dosadn"];
+        //var negativno = ["bad", "boring", "negative", "offensive", "shocking", "creepy", "crazy", "dishonest", "angry", "arrogant"];
         var kljucnaRijec = req.params["kljucnaRijec"];
         if (parseInt(req.params["filter"]) == 1) {
             return res.json(result);
@@ -125,6 +149,50 @@ exports.getComments = function(req, res) {
 
 };
 
+exports.getCommentsMobile = function(req, res) {
+var n=req.params.id;
+    n=n.replace("+"," ");
+  console.log("elo jesi normalan"+n);
+     sequelize.query("SELECT komentar FROM anketa_komentar,predmet p WHERE predmet_id =p.id && p.naziv='"+n+"'", {
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(function(result) {
+        var arr = [];
+       var pozitivno=["super","odlic","lako"," zanimlji","lako"];
+        var negativno=["los","grozn","nisu dob","nij","ile dosadn",". Dosadn"];
+         var kljucnaRijec = req.params["kljucnaRijec"];
+        if (parseInt(req.params["filter"]) == 1) {
+            return res.json(result);
+        } else if (parseInt(req.params["filter"]) == 2) { //samo pozitivni
+            for (var i = 0; i < result.length; ++i) {
+                for (var j = 0; j < pozitivno.length; j++) {
+                    if (result[i].komentar.search(pozitivno[j]) > -1) {arr.push(result[i]); break;}
+                }
+            }
+        } else if (parseInt(req.params["filter"]) == 3) //samo negativni
+        {
+            for (var i = 0; i < result.length; ++i) {
+                for (var j = 0; j < pozitivno.length; j++) {
+                    if (result[i].komentar.search(negativno[j]) > -1) {arr.push(result[i]); break;}
+                }
+            }
+    
+        }
+        res.json(arr);
+    });
+}
+
+exports.getNumberOfStudents = function(req, res) {
+var n=req.params.id;
+    n=n.replace("+"," ");
+  console.log("elo jesi normalan"+n);
+     sequelize.query("SELECT count(student) as 'broj', ag.naziv as 'naziv' FROM zamger.student_predmet, akademska_godina ag, predmet p where p.naziv='"+n+"' and predmet=p.id and ag.id=student_predmet.akademska_godina group by akademska_godina", {
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(function(result) {
+            return res.json(result);
+        });
+}
 exports.projectNumberOfStudents = function(req, res) {
     sequelize.query("SELECT akademska_godina, Count(*) broj_studenata FROM student_predmet WHERE predmet = :predmet_id GROUP BY akademska_godina", {
         replacements: {
@@ -205,6 +273,17 @@ exports.toPdf = function(req, res) {
         output: pdfPath
     });
     res.download(pdfPath);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
         var file = pdfPath;
         var filename = path.basename(file);
@@ -242,3 +321,20 @@ exports.updateImenaPredmeta = function(req, res){
 
   return res.send("OK");
 };*/
+
+
+
+exports.getAverageGrades=function(req,res){
+ var n=req.params.id;
+    n=n.replace("+"," ");
+  console.log("elo jesi normalan"+n);
+  sequelize.query("select avg(ocjena) as prosjek, ag.naziv as 'godina' from konacna_ocjena,osoba o,akademska_godina ag where student=o.id AND akademska_godina=ag.id && CONCAT(o.ime,' ',o.prezime)='"+n+"' group by naziv", { type: sequelize.QueryTypes.SELECT })
+    .then(function (users) {
+      return res.json(users);
+    });
+}
+
+
+
+
+
