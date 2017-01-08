@@ -2,7 +2,7 @@
 
 angular.module('datApp')
   .controller('GeneralCtrl', function ($scope, $http, $state) {
-    console.log($state.current.name);
+    var naziviGodina = ['2008/09', '2009/10', '2010/11', '2011/12', '2012/13', '2013/14', '2014/15', '2015/16', '2016/17'];
     $('select').material_select();
     $(document).ready(function(){
       $('.collapsible').collapsible();
@@ -69,14 +69,14 @@ angular.module('datApp')
           axisLabel: 'Akademska Godina',
           showMaxMin: false,
           tickFormat: function (d) {
-            return d3.format(',f')(d);
+            return naziviGodina[d];
           }
         },
         yAxis: {
           axisLabel: 'BrojStudenata',
           axisLabelDistance: -20,
-          tickFormat: function (d) {
-            return d3.format(',.1f')(d);
+            tickFormat: function (d) {
+              return d3.format('d')(d);
           }
         }
       }
@@ -93,6 +93,11 @@ angular.module('datApp')
         },
         y: function (d) {
           return d.y;
+        },
+        yAxis: {
+          tickFormat: function (d) {
+            return d3.format('d')(d);
+          }
         },
         showLabels: true,
         duration: 500,
@@ -119,6 +124,11 @@ $scope.optionsGradesByYear={
     },
     y: function (d) {
       return d.y;
+    },
+    yAxis: {
+      tickFormat: function (d) {
+        return d3.format('d')(d);
+      }
     },
     showLabels: true,
     duration: 500,
