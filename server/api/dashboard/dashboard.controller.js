@@ -152,7 +152,6 @@ exports.getComments = function(req, res) {
 exports.getCommentsMobile = function(req, res) {
 var n=req.params.id;
     n=n.replace("+"," ");
-  console.log("elo jesi normalan"+n);
      sequelize.query("SELECT komentar FROM anketa_komentar,predmet p WHERE predmet_id =p.id && p.naziv='"+n+"'", {
             type: sequelize.QueryTypes.SELECT
         })
@@ -176,7 +175,7 @@ var n=req.params.id;
                     if (result[i].komentar.search(negativno[j]) > -1) {arr.push(result[i]); break;}
                 }
             }
-    
+
         }
         res.json(arr);
     });
@@ -185,7 +184,6 @@ var n=req.params.id;
 exports.getNumberOfStudents = function(req, res) {
 var n=req.params.id;
     n=n.replace("+"," ");
-  console.log("elo jesi normalan"+n);
      sequelize.query("SELECT count(student) as 'broj', ag.naziv as 'naziv' FROM zamger.student_predmet, akademska_godina ag, predmet p where p.naziv='"+n+"' and predmet=p.id and ag.id=student_predmet.akademska_godina group by akademska_godina", {
             type: sequelize.QueryTypes.SELECT
         })
@@ -273,17 +271,17 @@ exports.toPdf = function(req, res) {
         output: pdfPath
     });
     res.download(pdfPath);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     /*
         var file = pdfPath;
         var filename = path.basename(file);
@@ -327,14 +325,8 @@ exports.updateImenaPredmeta = function(req, res){
 exports.getAverageGrades=function(req,res){
  var n=req.params.id;
     n=n.replace("+"," ");
-  console.log("elo jesi normalan"+n);
   sequelize.query("select avg(ocjena) as prosjek, ag.naziv as 'godina' from konacna_ocjena,osoba o,akademska_godina ag where student=o.id AND akademska_godina=ag.id && CONCAT(o.ime,' ',o.prezime)='"+n+"' group by naziv", { type: sequelize.QueryTypes.SELECT })
     .then(function (users) {
       return res.json(users);
     });
 }
-
-
-
-
-

@@ -23,6 +23,8 @@ router.get('/getAverageGrades/:id',controller.getAverageGrades);
 router.get('/projectNumberOfStudents/:predmetId', controller.projectNumberOfStudents);
 router.post('/topdf', controller.toPdf);
 
+router.get('/getCommentsForSubject/:predmetId/:academicYear/:filter/:kljucnaRijec', controller.getComments);
+
 router.get('/getCommentsMobile/:id/:filter',controller.getCommentsMobile);
 router.get('/getNumberOfStudents/:id',controller.getNumberOfStudents);
 
